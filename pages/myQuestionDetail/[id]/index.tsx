@@ -1,9 +1,9 @@
 import styles from '../index.module.scss';
-// import QuestionList from '../../components/questionList/questionList';
-const QuestionDetail = () => {
+import QuestionDetail from '../../../components/questionDetail/questionDetail';
+const myQuestionDetail = () => {
   return (
     <div className={styles.container}>
-      {/* <QuestionList/> */}
+      <QuestionDetail/>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React from "react"
 export const HEADER_TITLE: Record<string, string> = {
-    questionDetail: 'جزییات سوال',
+    myQuestionDetail: 'جزییات سوال',
     myQuestions: 'لیست سوالات'
 }

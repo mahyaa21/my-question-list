@@ -22,16 +22,16 @@ export const MODAL_KEY_MAP = {
   CREATE_CONDITION: 'CREATE_CONDITION',
 };
 
-// cards
-export const CARDS_REQUEST_IN_PROGRESS = 'cards/in-progress';
-export const CARD_MOVED = 'cards/move';
-export const CARD_CREATED = 'cards/created';
-export const CARD_UPDATED = 'cards/updated';
-export const CARDS_REQUEST_FAILURE = 'cards/failed';
-
 //questions
 export const QUESTION_REQUEST_IN_PROGRESS = 'QUESTION_REQUEST_IN_PROGRESS';
 export const QUESTION_FETCHED = 'QUESTION_FETCHED';
 export const QUESTION_CREATED = 'QUESTION_CREATED';
 export const QUESTION_UPDATED = 'QUESTION_UPDATED';
 export const QUESTION_REQUEST_FAILURE = 'QUESTION_REQUEST_FAILURE';
+
+//answers
+export const ANSWER_REQUEST_IN_PROGRESS = 'ANSWER_REQUEST_IN_PROGRESS';
+export const ANSWER_FETCHED = 'ANSWER_FETCHED';
+export const ANSWER_CREATED = 'ANSWER_CREATED';
+export const ANSWER_UPDATED = 'ANSWER_UPDATED';
+export const ANSWER_REQUEST_FAILURE = 'ANSWER_REQUEST_FAILURE';

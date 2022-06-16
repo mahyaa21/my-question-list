@@ -5,15 +5,15 @@ const withImages = require('next-images');
 
 const nextConfig = {
   publicRuntimeConfig: {
-    baseUrl: process.env.SERVER_ADDRESS || 'https://sit.kian.digital',
-    analyticId: process.env.ANALYTIC_ID,
-    auth: {
-      clientId: process.env.AUTH_CLIENT_ID || 'login-app',
-      baseUrl:
-        process.env.AUTH_BASEURL ||
-        'https://keycloak-crm.sit.kian.digital/auth/realms/master/protocol/openid-connect',
-    },
-    sentryDsn: process.env.SENTRY_DSN,
+    // baseUrl: process.env.SERVER_ADDRESS || 'https://sit.kian.digital',
+    // analyticId: process.env.ANALYTIC_ID,
+    // auth: {
+    //   clientId: process.env.AUTH_CLIENT_ID || 'login-app',
+    //   baseUrl:
+    //     process.env.AUTH_BASEURL ||
+    //     'https://keycloak-crm.sit.kian.digital/auth/realms/master/protocol/openid-connect',
+    // },
+    // sentryDsn: process.env.SENTRY_DSN,
   },
 };
 

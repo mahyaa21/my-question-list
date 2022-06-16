@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./header.module.scss";
 import { HEADER_TITLE } from "./headerTitle.data";
 import { ButtonWrapper } from "../../widgets";
+import Plus from "../../../static/icon/plus";
 import DropDownArrow from "../../../static/icon/dropDownArrow";
 export default function Header() {
 	const [title, setTitle] = useState<string>();
@@ -16,14 +17,15 @@ export default function Header() {
 				{title ? HEADER_TITLE[title] : ""}
 			</div>
 			<div className={styles.headerDetailWrapper}>
-				<ButtonWrapper onClick={() => console.log("hi")} appearance="primary">
-					+ سوال جدید
+				<ButtonWrapper className={styles.newQuestionButton} onClick={() => console.log("hi")} appearance="primary">
+					<Plus />
+					<span className={styles.newQuestionButtonText}>سوال جدید</span>
 				</ButtonWrapper>
 				<div className={styles.avatar}>
 					<img src="../../../static/images/avatar.png" alt="avatar" />
 				</div>
 				<div className={styles.userName}>الناز شاکردوست</div>
-				<DropDownArrow/>
+				<DropDownArrow />
 			</div>
 		</div>
 	);

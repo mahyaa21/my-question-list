@@ -1,6 +1,7 @@
 import React from 'react';
 import Button, { LoadingButton } from '@atlaskit/button';
-
+import classNames from 'classnames';
+import styles from './ButtonWrapper.module.scss'
 interface ButtonInterface {
   appearance: 'primary' | 'subtle' | 'link' | 'subtle-link';
   onClick?: () => void;
@@ -35,7 +36,7 @@ function ButtonWrapper({
           type={type}
           appearance={appearance}
           onClick={onClick}
-          className={className}
+          className={classNames(appearance === "primary" ? styles.primary : styles.subtle, className)}
           isDisabled={isDisabled}
         >
           {children}

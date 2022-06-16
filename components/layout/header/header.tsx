@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./header.module.scss";
 import { HEADER_TITLE } from "./headerTitle.data";
 import { ButtonWrapper } from "../../widgets";
+import DropDownArrow from "../../../static/icon/dropDownArrow";
 export default function Header() {
 	const [title, setTitle] = useState<string>();
 	const router = useRouter();
@@ -19,9 +20,10 @@ export default function Header() {
 					+ سوال جدید
 				</ButtonWrapper>
 				<div className={styles.avatar}>
-					<img src="../../../static/images/avatar.png" alt="avatar"/>
+					<img src="../../../static/images/avatar.png" alt="avatar" />
 				</div>
-				<div className={styles.userName}></div>
+				<div className={styles.userName}>الناز شاکردوست</div>
+				<DropDownArrow/>
 			</div>
 		</div>
 	);

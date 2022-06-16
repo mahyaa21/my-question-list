@@ -21,3 +21,24 @@
     text-align: right;
     color: #222222;
 }
+
+.avatar {
+    margin: 0px 40px 0px 12px;
+    display: flex;
+    align-items: center;
+}
+
+.userName {
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #454545;
+    margin-left: 20px;
+}
+
+.headerDetailWrapper {
+    display: flex;
+    align-items: center;
+}

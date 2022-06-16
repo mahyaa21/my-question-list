@@ -9,13 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@atlaskit/button": "^16.3.1",
+    "@atlaskit/checkbox": "^12.3.13",
+    "@atlaskit/radio": "^5.3.11",
+    "@atlaskit/select": "^15.3.0",
+    "@atlaskit/textarea": "^4.3.6",
+    "@atlaskit/textfield": "^5.1.12",
+    "@atlaskit/toggle": "^12.4.8",
     "@zeit/next-sass": "^1.0.1",
     "classnames": "^2.3.1",
+    "moment": "^2.29.3",
+    "moment-jalaali": "^0.9.6",
     "next": "12.1.6",
     "next-compose-plugins": "^2.2.1",
     "next-images": "^1.8.4",
     "node-sass": "^7.0.1",
     "react": "18.2.0",
+    "react-datepicker2": "^3.3.13",
     "react-dom": "18.2.0"
   },
   "devDependencies": {

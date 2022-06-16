@@ -1,0 +1,57 @@
+@import '../../variables.scss';
+
+.Input {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px !important;
+  border: solid 1px #dadde1 !important;
+  background-color: var(--fill-text-box) !important;
+
+  input::placeholder {
+    font-size: 14px;
+    color: var(--secondary);
+  }
+
+  input:not([data-compact]) {
+    height: 40px;
+  }
+}
+
+.label {
+  margin: 0 0 8px 0;
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-field-label);
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-left: 4px;
+  }
+}
+
+.description {
+  margin: 4px 0 0 0;
+  align-self: flex-start;
+  font-size: 10px;
+  color: var(--text-field-label);
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  textarea{
+    border: 1px solid #DADDE1 !important; 
+    border-radius: 4px;
+  }
+
+  textarea:focus {
+    border: 1px solid #0b66ff !important;
+    background-color: white !important;
+  }
+}

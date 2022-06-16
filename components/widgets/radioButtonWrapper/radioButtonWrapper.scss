@@ -1,0 +1,16 @@
+.checkboxTitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-field-label);
+}
+
+
+div[role=radiogroup] {
+  label {
+    span {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-field);
+    }
+  }
+}

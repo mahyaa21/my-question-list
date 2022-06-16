@@ -1,0 +1,131 @@
+///date picker
+button[data-testid='toggle-view'] {
+  display: none;
+}
+
+button[data-testid='submit-button'] {
+  background-color: #1890ff !important;
+  color: white !important;
+}
+
+h3[data-testid='days-head-range'] {
+  font-size: 14px !important;
+}
+
+input[data-testid='input-dp'] {
+  width: 100%;
+  height: 42px;
+  margin: 10px 0 2px;
+  padding: 12px 12px 11px 211px;
+  border-radius: 4px;
+  border: solid 1px #cbd8e3;
+}
+
+.labelTItle {
+  display: inline;
+  height: 21px;
+  position: absolute;
+  top: -16.5px;
+  right: 12px;
+  z-index: 1;
+  font-size: 12px;
+  color: #50687a;
+  padding: 0 8px;
+}
+
+.datePickerContainer {
+  z-index: 0;
+  width: 100%;
+
+  div {
+    outline: none;
+
+    input {
+      width: 100%;
+      height: 42px;
+      margin: 0;
+      padding: 12px !important;
+      border-radius: 4px;
+      border: solid 1px #dadde1;
+      color: #15354e;
+      font-size: 12px;
+      font-weight: 500;
+
+      &:focus-visible {
+        outline: none !important;
+      }
+
+      &:focus {
+        border: 1px solid #0b66ff;
+      }
+    }
+  }
+}
+
+:global {
+  .tether-element.tether-element-attached-bottom.tether-element-attached-center.tether-enabled.tether-target-attached-center.tether-target-attached-top {
+    z-index: 10 !important;
+
+    .calendarContainer {
+      width: 310px !important;
+
+      .dayWrapper {
+        margin: 0 !important;
+      }
+    }
+  }
+
+  .calendarContainer .selected button,
+  .calendarContainer .selected button:active,
+  .calendarContainer .selected button:focus,
+  .calendarContainer .selected button:hover :not([disabled]) {
+    background-color: #0b66ff !important;
+    border: 3px solid #0b66ff !important;
+  }
+
+  .calendarContainer {
+    width: 310px !important;
+
+    .dayWrapper {
+      margin: 0 !important;
+
+      button {
+        width: 32px !important;
+        height: 32px !important;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+    }
+
+    * {
+      font-size: 14px !important;
+    }
+  }
+
+  .calendarButton {
+    background-color: #0b66ff !important;
+  }
+}
+
+.dateTitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-field-label);
+  margin-bottom: 4px;
+}
+
+.datePickerWrapper {
+  display: flex;
+  position: relative;
+
+  div {
+    width: 100%;
+  }
+
+  svg {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+  }
+}

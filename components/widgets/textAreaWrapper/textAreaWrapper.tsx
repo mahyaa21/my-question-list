@@ -1,6 +1,6 @@
 import React, { Ref } from 'react';
 import TextArea from '@atlaskit/textarea';
-import style from './textAreaWrapper.scss';
+import style from './textAreaWrapper.module.scss';
 
 interface InputWrapperInterface {
   name?: string;

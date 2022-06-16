@@ -1,5 +1,3 @@
-@import '../../variables.scss';
-
 .Input {
   width: 100%;
   height: 40px;
@@ -42,10 +40,12 @@
   font-size: 10px;
   color: var(--text-field-label);
 }
-.errorMessage{
+
+.errorMessage {
   @extend.description;
   color: red;
 }
+
 .inputContainer {
   display: flex;
   flex-direction: column;

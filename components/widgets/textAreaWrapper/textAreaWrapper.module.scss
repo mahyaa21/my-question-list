@@ -1,5 +1,3 @@
-@import '../../variables.scss';
-
 .Input {
   width: 100%;
   height: 40px;
@@ -45,8 +43,9 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  textarea{
-    border: 1px solid #DADDE1 !important; 
+
+  textarea {
+    border: 1px solid #DADDE1 !important;
     border-radius: 4px;
   }
 

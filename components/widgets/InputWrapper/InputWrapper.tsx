@@ -1,7 +1,7 @@
 import React, { Ref } from 'react';
 import Textfield from '@atlaskit/textfield';
 import classes from 'classnames';
-import style from './InputWrapper.scss';
+import style from './InputWrapper.module.scss';
 
 interface InputWrapperInterface {
   name?: string;

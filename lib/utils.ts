@@ -98,7 +98,7 @@ class Utils {
   }
 
   static get baseUrl(): string {
-    return baseUrl;
+    return baseUrl || "http://localhost:3001";
   }
 
   static get fileBaseUrl(): string {

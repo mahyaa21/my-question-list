@@ -29,3 +29,9 @@ export const CARD_CREATED = 'cards/created';
 export const CARD_UPDATED = 'cards/updated';
 export const CARDS_REQUEST_FAILURE = 'cards/failed';
 
+//questions
+export const QUESTION_REQUEST_IN_PROGRESS = 'QUESTION_REQUEST_IN_PROGRESS';
+export const QUESTION_FETCHED = 'QUESTION_FETCHED';
+export const QUESTION_CREATED = 'QUESTION_CREATED';
+export const QUESTION_UPDATED = 'QUESTION_UPDATED';
+export const QUESTION_REQUEST_FAILURE = 'QUESTION_REQUEST_FAILURE';

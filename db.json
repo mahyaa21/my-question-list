@@ -1,12 +1,38 @@
 {
-    "posts": [
-      {
-        "title": "CopyRight Automatico",
-        "tags": "[JS]"
-      },
-      {
-        "title": "HtmlWebpackPlugin Multiples HTML files",
-        "tags": "[JS, webpack]"
-      }
-    ]
-  }
+  "questions": [{
+      "id": "1",
+      "title": "مشکل Auth در React",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، ",
+      "time": "",
+      "avatar": ""
+    },
+    {
+      "id": "2",
+      "title": "مشکل Auth در React",
+      "description": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، ",
+      "time": "",
+      "avatar": ""
+    }
+  ],
+  "answers": [{
+      "id": "1",
+      "answerId": "1",
+      "name": "علی کیا",
+      "description": "متغییر ENV رو توی فایلت تغییر بده درست میشه",
+      "avatar": "",
+      "time": "",
+      "positiveFeedback": 2,
+      "negativeFeedback": 0
+    },
+    {
+      "id": "2",
+      "answerId": "1",
+      "name": "علی کیا",
+      "description": "هشیم تسرد هدب رییغت تلیاف یوت ور ENV ریغتم",
+      "avatar": "",
+      "time": "",
+      "positiveFeedback": 2,
+      "negativeFeedback": 0
+    }
+  ]
+}

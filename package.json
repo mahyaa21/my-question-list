@@ -17,6 +17,8 @@
     "@atlaskit/textfield": "^5.1.12",
     "@atlaskit/toggle": "^12.4.8",
     "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.27.2",
+    "axios-auth-refresh": "^3.3.1",
     "classnames": "^2.3.1",
     "moment": "^2.29.3",
     "moment-jalaali": "^0.9.6",
@@ -26,7 +28,10 @@
     "node-sass": "^7.0.1",
     "react": "18.2.0",
     "react-datepicker2": "^3.3.13",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@types/node": "18.0.0",

@@ -9,13 +9,13 @@ import {
 import { ErrorUtils } from '../../lib/errorUtils';
 import { RequestInstance } from "../request";
 import { AnswerInterface } from "../../interfaces/answerInterface";
-export function getAnswersByAnswerId(id : string): Dispatcher {
+export function getAllAnswers(): Dispatcher {
 	return async (dispatch) => {
 		try {
 			dispatch({ type: ANSWER_REQUEST_IN_PROGRESS });
 
 			const response = await RequestInstance.get<Array<AnswerInterface>>(
-				`/answers?answerId=${id}`,
+				`/answers`,
 				{
 					params: {
 						pageNo: 0,

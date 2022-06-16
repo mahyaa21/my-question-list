@@ -2,6 +2,7 @@ export interface QuestionInterface {
     id: string;
     title: string;
     description: string;
-    time: string;
+    hour: string;
+    date: string;
     avatar: any;
 }

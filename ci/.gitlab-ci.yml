@@ -1,0 +1,107 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  PR_LOWER_NAME: shiva-front
+
+build:
+  stage: build
+  tags:
+    - docker-node8-npm-yarn
+  before_script:
+    - docker login registry.kian.digital -u=$R_USER -p=$R_PASS
+    - export PROJECT_IMAGE_NAME=registry.kian.digital/$PR_LOWER_NAME:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA
+  script:
+    - docker build -t $PROJECT_IMAGE_NAME -f ci/Dockerfile .
+    - docker push $PROJECT_IMAGE_NAME
+  only:
+    - develop
+    - /^rc-.*$/i
+  when:
+    manual
+  cache:
+    untracked: true
+    key: dependencies
+    paths:
+      - .npm
+  allow_failure:
+    true
+
+sit deploy:
+  stage: deploy
+  tags:
+    - kubelet-runner
+  needs:
+    - build
+  environment:
+    name: staging
+    kubernetes:
+      namespace: sit
+  before_script:
+    - helm repo update
+  after_script:
+    - kubectl rollout status deployment/$PR_LOWER_NAME -n sit
+  script:
+    - >
+      helm -n sit upgrade
+      --install $PR_LOWER_NAME kian_template/heimdall
+      --set image.tag=$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA
+      -f ci/sit.yml
+  when:
+    on_success
+  only:
+    refs:
+      - develop
+      - /^RC.*$/i
+
+uat deploy:
+  stage: deploy
+  tags:
+    - kubelet-runner
+  needs:
+    - build
+  environment:
+    name: staging
+    kubernetes:
+      namespace: uat
+  before_script:
+    - helm repo update
+  after_script:
+    - kubectl rollout status deployment/$PR_LOWER_NAME -n uat
+  script:
+    - >
+      helm -n uat upgrade
+      --install $PR_LOWER_NAME kian_template/heimdall
+      --set image.tag=$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA
+      -f ci/uat.yml
+  when:
+    on_success
+  only:
+    refs:
+      - develop
+      - /^RC.*$/i
+
+prod deploy:
+  stage: deploy
+  tags:
+    - kubelet-runner
+  needs:
+    - build
+  environment:
+    name: Production
+    kubernetes:
+      namespace: production
+  before_script:
+    - helm repo update
+  after_script:
+    - kubectl rollout status deployment/$PR_LOWER_NAME -n production
+  script:
+    - >
+      helm -n production upgrade --install $PR_LOWER_NAME kian_template/heimdall
+      --set image.tag=$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA -f ci/prod.yml
+  when:
+    manual
+  only:
+    refs:
+      - master

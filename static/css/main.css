@@ -1,0 +1,39 @@
+@import url(../fontiran.css);
+body {
+  height: auto !important;
+  font-family: 'dana VF', 'dana', arial !important;
+	direction: rtl;
+  margin: 0px !important;
+  overflow: hidden;
+}
+@supports (font-variation-settings: normal) {
+  body {
+   font-family: 'dana VF', tahoma, arial;
+  }
+}
+input, textarea, button, label {
+  font-family: inherit !important;
+}
+
+input::placeholder{
+  font-family: 'dana VF', 'dana', arial !important;
+}
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #a0a0a0;
+  -webkit-box-shadow: inset 0 0 6px rgba(160, 160, 160, 1);
+}

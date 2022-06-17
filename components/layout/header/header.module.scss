@@ -43,8 +43,11 @@
     align-items: center;
 }
 
-.newQuestionButton{
-    .newQuestionButtonText{
+.newQuestionButton {
+    width: 126px !important;
+    height: 36px !important;
+
+    .newQuestionButtonText {
         margin-right: 13px;
     }
 }

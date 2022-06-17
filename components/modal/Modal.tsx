@@ -2,6 +2,7 @@ import React from "react";
 import classes from "classnames";
 import style from "./Modal.module.scss";
 import { ButtonWrapper } from "../widgets";
+import Exit from "../../static/icon/Exit";
 
 interface ModalInterface {
 	handleClose: () => void;
@@ -20,11 +21,11 @@ function Modal({ handleClose, show, children }: ModalInterface) {
 		>
 			<section className={style.modalMain} onClick={stopPropagation}>
 				<ButtonWrapper
-					appearance="subtle"
+					appearance="link"
 					onClick={handleClose}
 					className={style.closeButton}
 				>
-					<span className="icon-Exit" />
+					<Exit />
 				</ButtonWrapper>
 				{children}
 			</section>

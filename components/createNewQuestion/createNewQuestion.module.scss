@@ -1,0 +1,37 @@
+.createNewQuestionContainer {
+    width: 700px;
+    height: 440px;
+    position: relative;
+}
+
+.createNewQuestionHeader {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: calc(100% - 48px);
+    height: 24px;
+    padding: 12px 24px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 8px -1px rgba(50, 50, 71, 0.05), 0px 0px 1px rgba(12, 26, 75, 0.24);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #222222;
+}
+
+.createNewQuestionButton {
+    width: 100px !important;
+    height: 36px !important;
+    margin-right: 48px;
+}
+
+.createNewQuestionFooter {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 20px 24px;
+}

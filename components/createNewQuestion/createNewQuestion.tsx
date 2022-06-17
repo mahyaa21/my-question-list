@@ -6,9 +6,20 @@ interface CreateNewQuestionProps {
 }
 const CreateNewQuestion = ({ onClose }: CreateNewQuestionProps) => {
 	return (
-		<div className={styles.QuestionListContainer}>
-			<ButtonWrapper onClick={()=>console.log('hi')} appearance="primary">ایجاد سوال</ButtonWrapper>
-			<ButtonWrapper onClick={onClose} appearance="link">انصراف</ButtonWrapper>
+		<div className={styles.createNewQuestionContainer}>
+			<div className={styles.createNewQuestionHeader}>ایجاد سوال جدید</div>
+			<div className={styles.createNewQuestionFooter}>
+				<ButtonWrapper onClick={onClose} appearance="link">
+					انصراف
+				</ButtonWrapper>
+				<ButtonWrapper
+					className={styles.createNewQuestionButton}
+					onClick={() => console.log("hi")}
+					appearance="primary"
+				>
+					ایجاد سوال
+				</ButtonWrapper>
+			</div>
 		</div>
 	);
 };

@@ -36,7 +36,7 @@ function ButtonWrapper({
           type={type}
           appearance={appearance}
           onClick={onClick}
-          className={classNames(appearance === "primary" ? styles.primary : styles.subtle, className)}
+          className={classNames(styles[appearance], className)}
           isDisabled={isDisabled}
         >
           {children}

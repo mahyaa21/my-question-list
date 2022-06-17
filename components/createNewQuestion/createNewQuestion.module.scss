@@ -29,9 +29,16 @@
     position: absolute;
     bottom: 0px;
     left: 0px;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin: 20px 24px;
+}
+
+.createNewQuestionContentWrapper {
+    margin: 76px 24px 0px;
+}
+
+.newQuestionTitle {
+    margin-bottom: 14px;
 }

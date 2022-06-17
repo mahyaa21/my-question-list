@@ -48,14 +48,16 @@ const QuestionBox = ({ question }: QuestionBoxInterface) => {
 		}
 	}, [question.id, answers.length]);
 	return (
-		<Box
-			title={question.title}
-			description={question.description}
-			time={question.hour}
-			date={question.date}
-			headerDetail={BOX_HEADER_SCHEMA}
-			Buttons={BOX_BUTTON_SCHEMA}
-		/>
+		<div className={styles.QuestionBoxContainer}>
+			<Box
+				title={question.title}
+				description={question.description}
+				time={question.hour}
+				date={question.date}
+				headerDetail={BOX_HEADER_SCHEMA}
+				Buttons={BOX_BUTTON_SCHEMA}
+			/>
+		</div>
 	);
 };
 

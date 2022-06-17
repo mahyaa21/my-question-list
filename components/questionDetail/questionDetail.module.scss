@@ -1,0 +1,24 @@
+.questionDetailContainer {
+    width: 100%;
+    max-width: 1222px;
+    margin: auto;
+}
+
+.createNewAnswer {
+    margin-bottom: 20px;
+}
+
+.questionDetailTitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #222222;
+    margin-top: 24px;
+}
+
+.questionDetailTextArea {
+    margin: 20px 0px;
+}

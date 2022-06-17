@@ -5,7 +5,7 @@ body {
   font-family: 'dana VF', 'dana', arial !important;
   direction: rtl;
   margin: 0px !important;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 @supports (font-variation-settings: normal) {

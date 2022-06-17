@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import styles from "./questionDetail.module.scss";
@@ -12,7 +12,10 @@ import { getAllQuestions } from "../../store/questions/action";
 import Discussion from "../../static/icon/discussion";
 import Happy from "../../static/icon/happy";
 import Sad from "../../static/icon/sad";
-import { HeaderDetailInterface, BoxButtonInterface } from "../../interfaces/box.interface";
+import {
+	HeaderDetailInterface,
+	BoxButtonInterface,
+} from "../../interfaces/box.interface";
 
 const QuestionDetail = () => {
 	const [newAnswer, setNewAnswer] = useState<string>();
@@ -48,7 +51,10 @@ const QuestionDetail = () => {
 			value: answers?.length || 0,
 		},
 	];
-	const getAnswerHeader = (positive: number, negative: number): Array<HeaderDetailInterface> => [
+	const getAnswerHeader = (
+		positive: number,
+		negative: number
+	): Array<HeaderDetailInterface> => [
 		{
 			icon: <Happy />,
 			value: positive,
@@ -61,7 +67,7 @@ const QuestionDetail = () => {
 	const getAnswerButtons = (): Array<BoxButtonInterface> => [
 		{
 			appearance: "subtle",
-			onClick: () => console.log('hi'),
+			onClick: () => console.log("hi"),
 			children: (
 				<span>
 					<Happy />
@@ -71,7 +77,7 @@ const QuestionDetail = () => {
 		},
 		{
 			appearance: "subtle",
-			onClick: () => console.log('hi'),
+			onClick: () => console.log("hi"),
 			children: (
 				<span>
 					<Sad />
@@ -111,12 +117,17 @@ const QuestionDetail = () => {
 			</div>
 			<div className={styles.createNewAnswer}>
 				<div className={styles.questionDetailTitle}>پاسخ خود را ثبت کنید</div>
+				<div className={styles.questionDetailTextArea}>
 				<TextAreaWrapper
 					label="پاسخ خود را بنویسید"
 					value={newAnswer}
 					onChange={(e) => setNewAnswer(e.target.value)}
+					minimumRows={8}
 				/>
-				<ButtonWrapper onClick={()=>console.log('hi')} appearance="primary">ارسال پاسخ</ButtonWrapper>
+				</div>
+				<ButtonWrapper onClick={() => console.log("hi")} appearance="primary">
+					ارسال پاسخ
+				</ButtonWrapper>
 			</div>
 		</div>
 	);

@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from "react";
+import momentJalaali from "moment-jalaali";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import styles from "./questionDetail.module.scss";
-import { getAllAnswers } from "../../store/answers/action";
+import { createAnswer, getAllAnswers } from "../../store/answers/action";
 import { RootState } from "../../store/rootReducer";
 import { AnswerInterface } from "../../interfaces/answer.interface";
 import Box from "../box/box";
@@ -16,7 +17,7 @@ import {
 	HeaderDetailInterface,
 	BoxButtonInterface,
 } from "../../interfaces/box.interface";
-
+momentJalaali.loadPersian({ dialect: "persian-modern" });
 const QuestionDetail = () => {
 	const [newAnswer, setNewAnswer] = useState<string>();
 	const router = useRouter();
@@ -86,6 +87,21 @@ const QuestionDetail = () => {
 			),
 		},
 	];
+	const submitAnswer = () => {
+		const ANSWER: AnswerInterface = {
+			id: `${Date.now()}`,
+			questionId: `${questionId}`,
+			name: "علی کیا",
+			description: newAnswer || "",
+			avatar: "",
+			hour: momentJalaali(Date.now()).format("HH:mm"),
+			date: momentJalaali(Date.now()).format("jYYYY/jM/jD"),
+			positiveFeedback: 0,
+			negativeFeedback: 0,
+		};
+		dispatch(createAnswer(ANSWER));
+		dispatch(getAllAnswers());
+	};
 	return (
 		<div className={styles.questionDetailContainer}>
 			<div>
@@ -118,14 +134,14 @@ const QuestionDetail = () => {
 			<div className={styles.createNewAnswer}>
 				<div className={styles.questionDetailTitle}>پاسخ خود را ثبت کنید</div>
 				<div className={styles.questionDetailTextArea}>
-				<TextAreaWrapper
-					label="پاسخ خود را بنویسید"
-					value={newAnswer}
-					onChange={(e) => setNewAnswer(e.target.value)}
-					minimumRows={8}
-				/>
+					<TextAreaWrapper
+						label="پاسخ خود را بنویسید"
+						value={newAnswer}
+						onChange={(e) => setNewAnswer(e.target.value)}
+						minimumRows={8}
+					/>
 				</div>
-				<ButtonWrapper onClick={() => console.log("hi")} appearance="primary">
+				<ButtonWrapper onClick={submitAnswer} appearance="primary">
 					ارسال پاسخ
 				</ButtonWrapper>
 			</div>

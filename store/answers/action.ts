@@ -36,6 +36,26 @@ export function getAllAnswers(): Dispatcher {
 	};
 }
 
+export function createAnswer(data: AnswerInterface): Dispatcher<AnswerInterface> {
+	return async (dispatch) => {
+	  try {
+		dispatch({ type: ANSWER_REQUEST_IN_PROGRESS });
+  
+		const response = await RequestInstance.post<AnswerInterface>(
+		  '/answers',
+		  data,
+		);
+		dispatch({
+		  type: ANSWER_CREATED,
+		  payload: { data: response.data },
+		});
+		return Promise.resolve(response.data);
+	  } catch (error) {
+		return handleApplicationFailure(dispatch, error);
+	  }
+	};
+  }
+
 function handleApplicationFailure(dispatch, error) {
 	const errorCode = error.response?.data?.status;
 	const errorMessage = ErrorUtils.getErrorMessage(

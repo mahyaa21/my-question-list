@@ -14,7 +14,7 @@ const QuestionDetail = () => {
 	useEffect(() => {
 		// dispatch(getAnswersByAnswerId());
 	}, []);
-	return <div className={styles.container}>{answers.map( answers => <div>{answers.name}</div>)}</div>;
+	return <div className={styles.questionDetailContainer}>{answers.map( answers => <div>{answers.name}</div>)}</div>;
 };
 
 export default QuestionDetail;

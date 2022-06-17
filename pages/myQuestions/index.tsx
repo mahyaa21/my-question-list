@@ -2,7 +2,7 @@ import styles from '../index.module.scss';
 import QuestionList from '../../components/questionList/questionList';
 const MyQuestions = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.MyQuestionsContainer}>
       <QuestionList/>
     </div>
   )

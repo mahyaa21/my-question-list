@@ -12,7 +12,7 @@ export default function Header({ createNewQuestionModal }: HeaderProps) {
 	const [title, setTitle] = useState<string>();
 	const router = useRouter();
 	useEffect(() => {
-		setTitle(router.pathname.slice(1, router.pathname.length));
+		setTitle(router.pathname.split("/")[1]);
 	}, [router.pathname]);
 	return (
 		<div className={styles.headerContainer}>

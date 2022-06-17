@@ -1,4 +1,4 @@
-import styles from '../index.module.scss';
+import styles from '../../index.module.scss';
 import QuestionDetail from '../../../components/questionDetail/questionDetail';
 const myQuestionDetail = () => {
   return (
@@ -8,4 +8,4 @@ const myQuestionDetail = () => {
   )
 }
 
-export default QuestionDetail;
+export default myQuestionDetail;

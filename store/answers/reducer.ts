@@ -8,7 +8,7 @@ import {
 	CLEAR
 } from "../constants";
 import { ReducerInitialState } from "../../interfaces/reducerInitailState";
-import { AnswerInterface } from "../../interfaces/answerInterface";
+import { AnswerInterface } from "../../interfaces/answer.interface";
 const initialState: ReducerInitialState<{
 	list: Array<AnswerInterface >;
 }> = {

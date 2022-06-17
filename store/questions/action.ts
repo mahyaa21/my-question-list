@@ -8,7 +8,7 @@ import {
 } from "../constants";
 import { ErrorUtils } from '../../lib/errorUtils';
 import { RequestInstance } from "../request";
-import { QuestionInterface } from "../../interfaces/questionInterface";
+import { QuestionInterface } from "../../interfaces/question.interface";
 export function getAllQuestions(): Dispatcher {
 	return async (dispatch) => {
 		try {

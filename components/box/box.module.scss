@@ -1,0 +1,82 @@
+.BoxContainer {
+    width: 100%;
+    max-width: 1222px;
+    margin: 20px auto;
+    background: #F9F9F9;
+    box-shadow: 0px 3px 8px -1px rgba(50, 50, 71, 0.05), 0px 0px 1px rgba(12, 26, 75, 0.24);
+    border-radius: 8px;
+}
+
+.BoxHeader {
+    background: #FFFFFF;
+    box-shadow: 0px 3px 8px -1px rgba(50, 50, 71, 0.05), 0px 0px 1px rgba(12, 26, 75, 0.24);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+}
+
+.BoxHeaderContent {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #222222;
+
+    .BoxHeaderTitle {
+        margin-right: 16px;
+    }
+}
+
+.BoxHeaderDetail {
+    @extend.BoxHeaderContent;
+    font-size: 12px;
+    font-weight: 300;
+
+    .BoxHeaderDetailValue {
+        font-weight: 500;
+    }
+}
+
+.BoxHeaderDetailTime {
+    padding-left: 12px;
+    margin-left: 12px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.BoxHeaderDetailDate {
+    margin-left: 20px;
+}
+
+.BoxHeaderDetailDiscussion {
+    display: flex;
+    align-items: flex-start;
+
+    span {
+        margin-right: 4px;
+    }
+}
+
+.BoxContent {
+    padding: 19px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #222222;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.seeDetailButton {
+    align-self: flex-end;
+}
+
+.BoxDesc {
+    align-self: flex-start;
+}

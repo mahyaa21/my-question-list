@@ -9,7 +9,7 @@ import {
 } from "../constants";
 import { RequestInstance } from "../request";
 import { ReducerInitialState } from "../../interfaces/reducerInitailState";
-import { QuestionInterface } from "../../interfaces/questionInterface";
+import { QuestionInterface } from "../../interfaces/question.interface";
 const initialState: ReducerInitialState<{
 	list: Array<QuestionInterface>;
 }> = {

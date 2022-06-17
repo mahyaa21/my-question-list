@@ -4,7 +4,7 @@ import { createQuestion, getAllQuestions } from "../../store/questions/action";
 import styles from "./createNewQuestion.module.scss";
 import { ButtonWrapper, InputWrapper, TextAreaWrapper } from "../widgets";
 import { useDispatch } from "react-redux";
-import { QuestionInterface } from "../../interfaces/questionInterface";
+import { QuestionInterface } from "../../interfaces/question.interface";
 interface CreateNewQuestionProps {
 	onClose: () => void;
 }

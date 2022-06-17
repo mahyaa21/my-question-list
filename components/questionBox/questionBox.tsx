@@ -1,21 +1,42 @@
 import React, { useEffect, useState } from "react";
 import styles from "./questionBox.module.scss";
-import { QuestionInterface } from "../../interfaces/questionInterface";
+import { QuestionInterface } from "../../interfaces/question.interface";
 import Discussion from "../../static/icon/discussion";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/rootReducer";
-import { AnswerInterface } from "../../interfaces/answerInterface";
+import { AnswerInterface } from "../../interfaces/answer.interface";
 import { getAllAnswers } from "../../store/answers/action";
-import { ButtonWrapper } from "../widgets";
+import { BoxButtonInterface } from "../../interfaces/box.interface";
+import { useRouter } from "next/router";
+import Box from "../box/box";
 interface QuestionBoxInterface {
 	question: QuestionInterface;
 }
+
 const QuestionBox = ({ question }: QuestionBoxInterface) => {
 	const [answerNumber, setAnswerNumber] = useState<number>(0);
 	const dispatch = useDispatch<any>();
 	const answers = useSelector(
 		({ answers }: RootState) => answers?.data.list
 	) as Array<AnswerInterface>;
+	const router = useRouter();
+	const gotoQuestionDetail = () =>
+		router.push(`/myQuestionDetail/${question.id}`);
+	const BOX_HEADER_SCHEMA = [
+		{
+			icon: <Discussion />,
+			value: answerNumber,
+		},
+	];
+
+	const BOX_BUTTON_SCHEMA: Array<BoxButtonInterface> = [
+		{
+			onClick: gotoQuestionDetail,
+			appearance: "subtle",
+			className: styles.seeDetailButton,
+			children: "مشاهده جزییات",
+		},
+	];
 	useEffect(() => {
 		if (answers.length) {
 			let initialAnswerNumber = answers.filter(
@@ -27,44 +48,14 @@ const QuestionBox = ({ question }: QuestionBoxInterface) => {
 		}
 	}, [question.id, answers.length]);
 	return (
-		<div className={styles.QuestionBoxContainer}>
-			<div className={styles.QuestionBoxHeader}>
-				<div className={styles.QuestionBoxHeaderContent}>
-					<img src="../../static/images/avatar2.png" />
-					<span className={styles.QuestionBoxHeaderTitle}>
-						{question.title}
-					</span>
-				</div>
-				<div className={styles.QuestionBoxHeaderDetail}>
-					<div className={styles.QuestionBoxHeaderDetailTime}>
-						<span>ساعت :</span>
-						<span className={styles.QuestionBoxHeaderDetailValue}>
-							{question.hour}
-						</span>
-					</div>
-					<div className={styles.QuestionBoxHeaderDetailDate}>
-						<span>تاریخ :</span>
-						<span className={styles.QuestionBoxHeaderDetailValue}>
-							{question.date}
-						</span>
-					</div>
-					<div className={styles.QuestionBoxHeaderDetailDiscussion}>
-						<Discussion />
-						<span>{answerNumber}</span>
-					</div>
-				</div>
-			</div>
-			<div className={styles.QuestionBoxContent}>
-				<div className={styles.QuestionBoxDesc}>{question.description}</div>
-				<ButtonWrapper
-					onClick={() => console.log("hi")}
-					appearance="subtle"
-					className={styles.seeDetailButton}
-				>
-					مشاهده جزییات
-				</ButtonWrapper>
-			</div>
-		</div>
+		<Box
+			title={question.title}
+			description={question.description}
+			time={question.hour}
+			date={question.date}
+			headerDetail={BOX_HEADER_SCHEMA}
+			Buttons={BOX_BUTTON_SCHEMA}
+		/>
 	);
 };
 

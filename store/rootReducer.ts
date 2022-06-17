@@ -5,8 +5,8 @@ import answers from './answers/reducer';
 import { ReducerInitialState } from '../interfaces/reducerInitailState';
 import { AuthStoreInterface } from '../interfaces/auth.interface';
 import modals, { ModalsStoreInterface } from './modals/reducer';
-import { QuestionInterface } from '../interfaces/questionInterface';
-import { AnswerInterface } from '../interfaces/answerInterface';
+import { QuestionInterface } from '../interfaces/question.interface';
+import { AnswerInterface } from '../interfaces/answer.interface';
 export interface RootState {
   auth: ReducerInitialState<AuthStoreInterface>;
   modals: ModalsStoreInterface;

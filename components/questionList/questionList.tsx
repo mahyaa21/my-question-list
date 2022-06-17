@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./questionList.module.scss";
 import { getAllQuestions } from "../../store/questions/action";
 import { RootState } from "../../store/rootReducer";
-import { QuestionInterface } from "../../interfaces/questionInterface";
+import { QuestionInterface } from "../../interfaces/question.interface";
 import QuestionBox from "../questionBox/questionBox";
 const QuestionList = () => {
 	const dispatch = useDispatch<any>();

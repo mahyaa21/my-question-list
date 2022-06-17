@@ -5,7 +5,10 @@ import { HEADER_TITLE } from "./headerTitle.data";
 import { ButtonWrapper } from "../../widgets";
 import Plus from "../../../static/icon/plus";
 import DropDownArrow from "../../../static/icon/dropDownArrow";
-export default function Header() {
+interface HeaderProps {
+	createNewQuestionModal: () => void;
+}
+export default function Header({ createNewQuestionModal }: HeaderProps) {
 	const [title, setTitle] = useState<string>();
 	const router = useRouter();
 	useEffect(() => {
@@ -17,7 +20,11 @@ export default function Header() {
 				{title ? HEADER_TITLE[title] : ""}
 			</div>
 			<div className={styles.headerDetailWrapper}>
-				<ButtonWrapper className={styles.newQuestionButton} onClick={() => console.log("hi")} appearance="primary">
+				<ButtonWrapper
+					className={styles.newQuestionButton}
+					onClick={createNewQuestionModal}
+					appearance="primary"
+				>
 					<Plus />
 					<span className={styles.newQuestionButtonText}>سوال جدید</span>
 				</ButtonWrapper>

@@ -15,11 +15,7 @@ export const OPEN_MODAL = 'modals/open';
 export const CLOSE_MODAL = 'modals/close';
 
 export const MODAL_KEY_MAP = {
-  CARD_DETAIL: 'CARD_DETAIL',
-  CREATE_CARD: 'CREATE_CARD',
-  CREATE_PHASE: 'CREATE_PHASE',
-  PIPE_SETTING: 'PIPE_SETTING',
-  CREATE_CONDITION: 'CREATE_CONDITION',
+  CREATE_NEW_QUESTION: 'CREATE_NEW_QUESTION'
 };
 
 //questions

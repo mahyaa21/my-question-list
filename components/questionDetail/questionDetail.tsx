@@ -3,7 +3,11 @@ import momentJalaali from "moment-jalaali";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import styles from "./questionDetail.module.scss";
-import { createAnswer, getAllAnswers } from "../../store/answers/action";
+import {
+	createAnswer,
+	getAllAnswers,
+	updateAnswer,
+} from "../../store/answers/action";
 import { RootState } from "../../store/rootReducer";
 import { AnswerInterface } from "../../interfaces/answer.interface";
 import Box from "../box/box";
@@ -65,10 +69,12 @@ const QuestionDetail = () => {
 			value: negative,
 		},
 	];
-	const getAnswerButtons = (): Array<BoxButtonInterface> => [
+	const getAnswerButtons = (
+		answer: AnswerInterface
+	): Array<BoxButtonInterface> => [
 		{
 			appearance: "subtle",
-			onClick: () => console.log("hi"),
+			onClick: () => addFeedBack(answer, "positive"),
 			children: (
 				<span>
 					<Happy />
@@ -78,7 +84,7 @@ const QuestionDetail = () => {
 		},
 		{
 			appearance: "subtle",
-			onClick: () => console.log("hi"),
+			onClick: () => addFeedBack(answer, "negative"),
 			children: (
 				<span>
 					<Sad />
@@ -87,6 +93,24 @@ const QuestionDetail = () => {
 			),
 		},
 	];
+	const addFeedBack = (
+		answer: AnswerInterface,
+		type: "positive" | "negative"
+	) => {
+		const UPDATED_ANSWER = {
+			...answer,
+			positiveFeedback:
+				type === "positive"
+					? answer.positiveFeedback++
+					: answer.positiveFeedback,
+			negativeFeedback:
+				type === "negative"
+					? answer.negativeFeedback++
+					: answer.negativeFeedback,
+		};
+		dispatch(updateAnswer(UPDATED_ANSWER));
+		dispatch(getAllAnswers());
+	};
 	const submitAnswer = () => {
 		const ANSWER: AnswerInterface = {
 			id: `${Date.now()}`,
@@ -124,10 +148,10 @@ const QuestionDetail = () => {
 						time={answer?.hour}
 						date={answer.date}
 						headerDetail={getAnswerHeader(
-							answer.negativeFeedback,
+							answer.positiveFeedback,
 							answer.negativeFeedback
 						)}
-						Buttons={getAnswerButtons()}
+						Buttons={getAnswerButtons(answer)}
 					/>
 				))}
 			</div>

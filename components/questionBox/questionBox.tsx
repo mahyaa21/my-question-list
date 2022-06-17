@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/rootReducer";
 import { AnswerInterface } from "../../interfaces/answerInterface";
 import { getAllAnswers } from "../../store/answers/action";
+import { ButtonWrapper } from "../widgets";
 interface QuestionBoxInterface {
 	question: QuestionInterface;
 }
@@ -28,24 +29,40 @@ const QuestionBox = ({ question }: QuestionBoxInterface) => {
 	return (
 		<div className={styles.QuestionBoxContainer}>
 			<div className={styles.QuestionBoxHeader}>
-				<div>
+				<div className={styles.QuestionBoxHeaderContent}>
 					<img src="../../static/images/avatar2.png" />
-					<div>{question.title}</div>
+					<span className={styles.QuestionBoxHeaderTitle}>
+						{question.title}
+					</span>
 				</div>
-				<div>
-					<div>
+				<div className={styles.QuestionBoxHeaderDetail}>
+					<div className={styles.QuestionBoxHeaderDetailTime}>
 						<span>ساعت :</span>
-						<span>{question.hour}</span>
+						<span className={styles.QuestionBoxHeaderDetailValue}>
+							{question.hour}
+						</span>
 					</div>
-					<div>
+					<div className={styles.QuestionBoxHeaderDetailDate}>
 						<span>تاریخ :</span>
-						<span>{question.date}</span>
+						<span className={styles.QuestionBoxHeaderDetailValue}>
+							{question.date}
+						</span>
 					</div>
-					<div>
+					<div className={styles.QuestionBoxHeaderDetailDiscussion}>
 						<Discussion />
 						<span>{answerNumber}</span>
 					</div>
 				</div>
+			</div>
+			<div className={styles.QuestionBoxContent}>
+				<div className={styles.QuestionBoxDesc}>{question.description}</div>
+				<ButtonWrapper
+					onClick={() => console.log("hi")}
+					appearance="subtle"
+					className={styles.seeDetailButton}
+				>
+					مشاهده جزییات
+				</ButtonWrapper>
 			</div>
 		</div>
 	);

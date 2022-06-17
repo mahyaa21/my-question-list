@@ -1,9 +1,9 @@
 .primary {
     width: 126px !important;
     height: 36px !important;
-    background: #27AE60 !important;
+    background-color: #27AE60 !important;
     border-radius: 6px !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     font-size: 12px !important;
     color: #FFFFFF !important;
     display: flex !important;
@@ -18,4 +18,13 @@
 
 }
 
-.subtle {}
+.subtle {
+    @extend.primary;
+    background-color: transparent !important;
+    border: 1px solid #27AE60 !important;
+
+    span {
+        color: #27AE60 !important;
+    }
+
+}

@@ -8,6 +8,7 @@ import { AnswerInterface } from "../../interfaces/answer.interface";
 import { getAllAnswers } from "../../store/answers/action";
 import { BoxButtonInterface } from "../../interfaces/box.interface";
 import { useRouter } from "next/router";
+import { ButtonWrapper } from "../widgets";
 import Box from "../box/box";
 interface QuestionBoxInterface {
 	question: QuestionInterface;
@@ -29,13 +30,14 @@ const QuestionBox = ({ question }: QuestionBoxInterface) => {
 		},
 	];
 
-	const BOX_BUTTON_SCHEMA: Array<BoxButtonInterface> = [
-		{
-			onClick: gotoQuestionDetail,
-			appearance: "subtle",
-			className: styles.seeDetailButton,
-			children: "مشاهده جزییات",
-		},
+	const BOX_BUTTON_SCHEMA: Array<any> = [
+		<ButtonWrapper
+			onClick={gotoQuestionDetail}
+			appearance="subtle"
+			className={styles.seeDetailButton}
+		>
+			مشاهده جزییات
+		</ButtonWrapper>,
 	];
 	useEffect(() => {
 		if (answers.length) {

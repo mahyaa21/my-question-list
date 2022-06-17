@@ -40,7 +40,7 @@ const QuestionDetail = () => {
 			dispatch(getAllAnswers());
 			return null;
 		}
-	}, [questionId, AllAnswers.length]);
+	}, [questionId, AllAnswers.length, AllAnswers]);
 
 	const question = useMemo(() => {
 		if (AllQuestions.length) {
@@ -69,29 +69,23 @@ const QuestionDetail = () => {
 			value: negative,
 		},
 	];
-	const getAnswerButtons = (
-		answer: AnswerInterface
-	): Array<BoxButtonInterface> => [
-		{
-			appearance: "subtle",
-			onClick: () => addFeedBack(answer, "positive"),
-			children: (
-				<span>
-					<Happy />
-					<span>پاسخ خوب بود</span>
-				</span>
-			),
-		},
-		{
-			appearance: "subtle",
-			onClick: () => addFeedBack(answer, "negative"),
-			children: (
-				<span>
-					<Sad />
-					<span>پاسخ خوب نبود</span>
-				</span>
-			),
-		},
+	const getAnswerButtons = (answer: AnswerInterface): Array<any> => [
+		<ButtonWrapper
+			appearance="subtle"
+			className={styles.positiveFeedback}
+			onClick={() => addFeedBack(answer, "positive")}
+		>
+			<Happy />
+			<span>پاسخ خوب بود</span>
+		</ButtonWrapper>,
+		<ButtonWrapper
+			appearance="subtle"
+			className={styles.negativeFeedback}
+			onClick={() => addFeedBack(answer, "negative")}
+		>
+			<Sad />
+			<span>پاسخ خوب نبود</span>
+		</ButtonWrapper>,
 	];
 	const addFeedBack = (
 		answer: AnswerInterface,
@@ -101,11 +95,11 @@ const QuestionDetail = () => {
 			...answer,
 			positiveFeedback:
 				type === "positive"
-					? answer.positiveFeedback++
+					? answer.positiveFeedback + 1
 					: answer.positiveFeedback,
 			negativeFeedback:
 				type === "negative"
-					? answer.negativeFeedback++
+					? answer.negativeFeedback + 1
 					: answer.negativeFeedback,
 		};
 		dispatch(updateAnswer(UPDATED_ANSWER));

@@ -6,7 +6,7 @@ import {
 	ANSWER_UPDATED,
 	ANSWER_REQUEST_FAILURE,
 } from "../constants";
-import { ErrorUtils } from '../../lib/errorUtils';
+import { ErrorUtils } from "../../lib/errorUtils";
 import { RequestInstance } from "../request";
 import { AnswerInterface } from "../../interfaces/answer.interface";
 export function getAllAnswers(): Dispatcher {
@@ -36,48 +36,50 @@ export function getAllAnswers(): Dispatcher {
 	};
 }
 
-export function createAnswer(data: AnswerInterface): Dispatcher<AnswerInterface> {
+export function createAnswer(
+	data: AnswerInterface
+): Dispatcher<AnswerInterface> {
 	return async (dispatch) => {
-	  try {
-		dispatch({ type: ANSWER_REQUEST_IN_PROGRESS });
-  
-		const response = await RequestInstance.post<AnswerInterface>(
-		  '/answers',
-		  data,
-		);
-		dispatch({
-		  type: ANSWER_CREATED,
-		  payload: { data: response.data },
-		});
-		return Promise.resolve(response.data);
-	  } catch (error) {
-		return handleApplicationFailure(dispatch, error);
-	  }
-	};
-  }
+		try {
+			dispatch({ type: ANSWER_REQUEST_IN_PROGRESS });
 
-  export function updateAnswer(data: AnswerInterface): Dispatcher {
-	return async (dispatch) => {
-	  try {
-		dispatch({ type: ANSWER_REQUEST_IN_PROGRESS });
-  
-		const response = await RequestInstance.put<AnswerInterface>(
-			`/answers/${data.id}`,
-		  data,
-		);
-		dispatch({
-		  type: ANSWER_UPDATED,
-		  payload: {
-			id: data.id,
-			data: response.data,
-		  },
-		});
-		return Promise.resolve();
-	  } catch (error) {
-		return handleApplicationFailure(dispatch, error);
-	  }
+			const response = await RequestInstance.post<AnswerInterface>(
+				"/answers",
+				data
+			);
+			dispatch({
+				type: ANSWER_CREATED,
+				payload: { data: response.data },
+			});
+			return Promise.resolve(response.data);
+		} catch (error) {
+			return handleApplicationFailure(dispatch, error);
+		}
 	};
-  }
+}
+
+export function updateAnswer(data: AnswerInterface): Dispatcher {
+	return async (dispatch) => {
+		try {
+			dispatch({ type: ANSWER_REQUEST_IN_PROGRESS });
+
+			const response = await RequestInstance.put<AnswerInterface>(
+				`/answers/${data.id}`,
+				data
+			);
+			dispatch({
+				type: ANSWER_UPDATED,
+				payload: {
+					id: data.id,
+					data: response.data,
+				},
+			});
+			return Promise.resolve();
+		} catch (error) {
+			return handleApplicationFailure(dispatch, error);
+		}
+	};
+}
 function handleApplicationFailure(dispatch, error) {
 	const errorCode = error.response?.data?.status;
 	const errorMessage = ErrorUtils.getErrorMessage(

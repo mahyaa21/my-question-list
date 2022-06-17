@@ -16,5 +16,5 @@ export interface BoxInterface{
 	description: string;
 	image?: any;
 	headerDetail: Array<HeaderDetailInterface>;
-	Buttons?: Array<BoxButtonInterface>;
+	Buttons?: Array<any>;
 }

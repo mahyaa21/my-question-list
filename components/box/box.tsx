@@ -41,18 +41,12 @@ const Box = ({
 			</div>
 			<div className={styles.BoxContent}>
 				<div className={styles.BoxDesc}>{description}</div>
+				<div className={styles.boxButtonsWrapper}>
 				{Buttons?.length &&
 					Buttons.map((button) => {
-						return (
-							<ButtonWrapper
-								onClick={button.onClick}
-								appearance={button.appearance}
-								className={styles.seeDetailButton}
-							>
-								{button.children}
-							</ButtonWrapper>
-						);
+						return button;
 					})}
+					</div>
 			</div>
 		</div>
 	);

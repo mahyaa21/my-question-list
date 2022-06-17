@@ -1,12 +1,31 @@
 import React, { useEffect, useState } from "react";
+import momentJalaali from "moment-jalaali";
+import { createQuestion, getAllQuestions } from "../../store/questions/action";
 import styles from "./createNewQuestion.module.scss";
 import { ButtonWrapper, InputWrapper, TextAreaWrapper } from "../widgets";
+import { useDispatch } from "react-redux";
+import { QuestionInterface } from "../../interfaces/questionInterface";
 interface CreateNewQuestionProps {
 	onClose: () => void;
 }
+momentJalaali.loadPersian({ dialect: "persian-modern" });
 const CreateNewQuestion = ({ onClose }: CreateNewQuestionProps) => {
 	const [questionTitle, setQuestionTitle] = useState<string>();
 	const [questionDescription, setQuestionDescription] = useState<string>();
+	const dispatch = useDispatch<any>();
+	const submitQuestion = () => {
+		const NEW_QUESTION: QuestionInterface = {
+			id: `${Date.now()}`,
+			title: questionTitle || "",
+			description: questionDescription || "",
+			hour: momentJalaali(Date.now()).format("HH:mm"),
+			date: momentJalaali(Date.now()).format("jYYYY/jM/jD"),
+			avatar: "",
+		};
+		dispatch(createQuestion(NEW_QUESTION));
+		dispatch(getAllQuestions());
+		onClose();
+	};
 	return (
 		<div className={styles.createNewQuestionContainer}>
 			<div className={styles.createNewQuestionHeader}>ایجاد سوال جدید</div>
@@ -30,7 +49,7 @@ const CreateNewQuestion = ({ onClose }: CreateNewQuestionProps) => {
 				</ButtonWrapper>
 				<ButtonWrapper
 					className={styles.createNewQuestionButton}
-					onClick={() => console.log("hi")}
+					onClick={submitQuestion}
 					appearance="primary"
 				>
 					ایجاد سوال

@@ -36,6 +36,25 @@ export function getAllQuestions(): Dispatcher {
 	};
 }
 
+export function createQuestion(data: QuestionInterface): Dispatcher<QuestionInterface> {
+	return async (dispatch) => {
+	  try {
+		dispatch({ type: QUESTION_REQUEST_IN_PROGRESS });
+  
+		const response = await RequestInstance.post<QuestionInterface>(
+		  '/questions',
+		  data,
+		);
+		dispatch({
+		  type: QUESTION_CREATED,
+		  payload: { data: response.data },
+		});
+		return Promise.resolve(response.data);
+	  } catch (error) {
+		return handleApplicationFailure(dispatch, error);
+	  }
+	};
+  }
 function handleApplicationFailure(dispatch, error) {
 	const errorCode = error.response?.data?.status;
 	const errorMessage = ErrorUtils.getErrorMessage(

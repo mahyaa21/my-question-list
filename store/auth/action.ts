@@ -1,7 +1,7 @@
-import axios from 'axios';
-import getConfig from 'next/config';
-import * as querystring from 'querystring';
-import { wrappedLocalStorage } from '../../lib/hybridStorage';
+import { RequestInstance } from '../request';
+import { Dispatcher } from '../../interfaces/dispatcher';
+import { ErrorUtils } from '../../lib/errorUtils';
+import { AuthStoreInterface } from '../../interfaces/auth.interface';
 import {
   AUTH_FAILED_LOGIN,
   AUTH_START_LOGIN,
@@ -10,54 +10,42 @@ import {
   REFRESH_TOKEN,
   TOKEN,
 } from '../constants';
-import { AccessTokenInterface } from '../../interfaces/auth';
-import { StringUtils } from '../../lib/StringUtils';
-import { clear } from '../globalAction';
-import { RequestInstance } from '../request';
 
-const {
-  publicRuntimeConfig: { auth },
-} = getConfig();
+export function getAuthenticatedUser(): Dispatcher {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: AUTH_START_LOGIN });
 
-declare const location: Location;
-
-export const login = (userName, password) => async dispatch => {
-  try {
-    dispatch({ type: AUTH_START_LOGIN });
-    const response = await axios.post<AccessTokenInterface>(
-      `${auth.baseUrl}/token?redirect_uri=http://localhost:3000/database`,
-      querystring.stringify({
-        grant_type: 'password',
-        client_id: auth.clientId,
-        username: userName,
-        password: password,    
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+      const response = await RequestInstance.get<Array<AuthStoreInterface>>(
+        '/user',
+        {
+          params: {
+            pageNo: 0,
+            pageSize: 1000,
+            sortType: 'DESC'
+          },
         },
-      },
-    );
+      );
 
-    wrappedLocalStorage.setItem(TOKEN, response.data.access_token);
-    wrappedLocalStorage.setItem(REFRESH_TOKEN, response.data.refresh_token);
-    dispatch({ type: AUTH_SUCCESS_LOGIN });
-    return Promise.resolve();
-  } catch (error) {
-    dispatch({ type: AUTH_FAILED_LOGIN });
-    return Promise.reject(error);
-  }
-};
+      dispatch({
+        type: AUTH_SUCCESS_LOGIN,
+        payload: { data: response.data },
+      });
+      return Promise.resolve();
+    } catch (error) {
+      return handleApplicationFailure(dispatch, error);
+    }
+  };
+}
 
-export const logout = () => async dispatch => {
-  const refreshToken = localStorage.getItem(REFRESH_TOKEN);
-  try {
-    await RequestInstance.post<void>(`${location.origin}/api/logout`, {
-      refreshToken,
-    });
-  } finally {
-    wrappedLocalStorage.removeItem(TOKEN);
-    clear()(dispatch);
-    dispatch({ type: LOGOUT });
-  }
-};
+function handleApplicationFailure(dispatch, error) {
+  const errorCode = error.response?.data?.status;
+  const errorMessage = ErrorUtils.getErrorMessage(
+    error.response?.data?.exceptionMessage || errorCode,
+  );
+  dispatch({
+    type: AUTH_FAILED_LOGIN,
+    payload: { errorMessage, errorCode },
+  });
+  return Promise.reject(errorMessage);
+}

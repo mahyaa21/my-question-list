@@ -7,8 +7,9 @@ import Plus from "../../../static/icon/plus";
 import DropDownArrow from "../../../static/icon/dropDownArrow";
 interface HeaderProps {
 	createNewQuestionModal: () => void;
+	userName: string;
 }
-export default function Header({ createNewQuestionModal }: HeaderProps) {
+export default function Header({ createNewQuestionModal, userName }: HeaderProps) {
 	const [title, setTitle] = useState<string>();
 	const router = useRouter();
 	useEffect(() => {
@@ -31,7 +32,7 @@ export default function Header({ createNewQuestionModal }: HeaderProps) {
 				<div className={styles.avatar}>
 					<img src="../../../static/images/avatar.png" alt="avatar" />
 				</div>
-				<div className={styles.userName}>الناز شاکردوست</div>
+				<div className={styles.userName}>{userName}</div>
 				<DropDownArrow />
 			</div>
 		</div>

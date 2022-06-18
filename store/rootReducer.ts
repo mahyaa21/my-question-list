@@ -8,7 +8,7 @@ import modals, { ModalsStoreInterface } from './modals/reducer';
 import { QuestionInterface } from '../interfaces/question.interface';
 import { AnswerInterface } from '../interfaces/answer.interface';
 export interface RootState {
-  auth: ReducerInitialState<AuthStoreInterface>;
+  auth: ReducerInitialState<{user: AuthStoreInterface}>;
   modals: ModalsStoreInterface;
   questions: ReducerInitialState<{
     list: Array<QuestionInterface>;

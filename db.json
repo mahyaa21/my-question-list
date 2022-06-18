@@ -15,22 +15,6 @@
       "hour": "۱۶:۴۸",
       "date": "۱۴۰۰/۲/۱۵ ",
       "avatar": ""
-    },
-    {
-      "id": "1655453109930",
-      "title": "سوال سوم",
-      "description": "سلام این سوال سوم است",
-      "hour": "12:35",
-      "date": "1401/3/27",
-      "avatar": ""
-    },
-    {
-      "id": "1655453204252",
-      "title": "سوال چهارم",
-      "description": "سلام این سوالچهارم است",
-      "hour": "12:36",
-      "date": "1401/3/27",
-      "avatar": ""
     }
   ],
   "answers": [
@@ -49,7 +33,7 @@
       "id": "2",
       "questionId": "1",
       "name": "علی کیا",
-      "description": "هشیم تسرد هدب رییغت تلیاف یوت ور ENV ریغتم",
+      "description": "متغییر ENV رو توی فایلت تغییر بده درست میشه",
       "avatar": "",
       "hour": "۱۶:۴۸",
       "date": "۱۴۰۰/۲/۱۵ ",
@@ -64,8 +48,13 @@
       "avatar": "",
       "hour": "15:57",
       "date": "1401/3/27",
-      "positiveFeedback": 0,
-      "negativeFeedback": 0
+      "positiveFeedback": 1,
+      "negativeFeedback": 1
     }
-  ]
+  ],
+  "user":{
+    "isAuthenticated" : true,
+    "fullName": "الناز شاکردوست",
+    "avatar": ""
+  }
 }

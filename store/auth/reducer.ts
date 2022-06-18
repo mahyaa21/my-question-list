@@ -1,48 +1,52 @@
+import { AnyAction } from "redux";
 import {
-  AUTH_FAILED_LOGIN,
-  AUTH_START_LOGIN,
-  AUTH_SUCCESS_LOGIN,
-  LOGOUT,
-  REFRESH_TOKEN,
-  TOKEN,
-} from '../constants';
-import { ReducerInitialState } from '../../interfaces/reducerInitailState';
-import { AuthStoreInterface } from '../../interfaces/auth.interface';
-import { wrappedLocalStorage } from '../../lib/hybridStorage';
-import { StringUtils } from '../../lib/StringUtils';
+	AUTH_FAILED_LOGIN,
+	AUTH_START_LOGIN,
+	AUTH_SUCCESS_LOGIN,
+	CLEAR,
+} from "../constants";
+import { ReducerInitialState } from "../../interfaces/reducerInitailState";
+import { AuthStoreInterface } from "../../interfaces/auth.interface";
 
-const isAuthorized = () =>
-  StringUtils.isItFilled(wrappedLocalStorage.getItem(TOKEN)) &&
-  StringUtils.isItFilled(wrappedLocalStorage.getItem(REFRESH_TOKEN));
-const initialState: ReducerInitialState<AuthStoreInterface> = {
-  error: false,
-  loading: false,
-  data: {
-    isAuthenticated: false,
-  },
+const initialState: ReducerInitialState<{
+	user: AuthStoreInterface;
+}> = {
+	loading: false,
+	data: {
+		user: { isAuthenticated: true, userName: "" },
+	},
+	error: false,
 };
 
-export default (state = initialState, { type }) => {
-  switch (type) {
-    case AUTH_START_LOGIN:
-      return { ...state, error: false, loading: true };
-    case AUTH_SUCCESS_LOGIN:
-      return {
-        data: {
-          ...state.data,
-          isAuthenticated: true,
-        },
-        error: false,
-        loading: false,
-      };
-    case AUTH_FAILED_LOGIN:
-      return { ...state, error: true, loading: false };
-    case LOGOUT:
-      return { data: { isAuthenticated: false }, error: false, loading: false };
-    default:
-      return {
-        ...state,
-        data: { ...state.data, isAuthenticated: isAuthorized() },
-      };
-  }
-};
+export default function (
+	state = initialState,
+	action: AnyAction
+): ReducerInitialState {
+	if (action.type === AUTH_START_LOGIN) {
+		return {
+			...state,
+			loading: true,
+			error: false,
+		};
+	} else if (action.type === AUTH_SUCCESS_LOGIN) {
+		const user = action.payload?.data;
+		return {
+			data: {
+				user,
+			},
+			loading: false,
+			error: false,
+		};
+	} else if (action.type === AUTH_FAILED_LOGIN) {
+		return {
+			...state,
+			error: true,
+			loading: false,
+			errorCode: action.payload?.errorCode,
+			errorMessage: action.payload?.errorMessage,
+		};
+	} else if (action.type === CLEAR) {
+		return initialState;
+	}
+	return state;
+}

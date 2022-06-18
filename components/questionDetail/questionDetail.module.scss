@@ -1,11 +1,11 @@
 .questionDetailContainer {
     width: 100%;
     max-width: 1222px;
-    margin: auto;
+    margin: 0px auto;
 }
 
 .createNewAnswer {
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 
 .questionDetailTitle {
@@ -44,5 +44,15 @@
     span {
         color: #F16063 !important;
     }
+}
 
+.emptyContent {
+    margin: 24px 0px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #919191;
 }

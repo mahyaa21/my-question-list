@@ -133,7 +133,7 @@ const QuestionDetail = () => {
 				)}
 			<div className={styles.answersContainer}>
 				<div className={styles.questionDetailTitle}>پاسخ‌ها</div>
-				{answers?.map((answer: AnswerInterface) => (
+				{answers?.length ? answers?.map((answer: AnswerInterface) => (
 					<Box
 						title={answer.name}
 						description={answer?.description}
@@ -145,7 +145,7 @@ const QuestionDetail = () => {
 						)}
 						Buttons={getAnswerButtons(answer)}
 					/>
-				))}
+				)) : <div className={styles.emptyContent}>پاسخی وجود ندارد</div>}
 			</div>
 			<div className={styles.createNewAnswer}>
 				<div className={styles.questionDetailTitle}>پاسخ خود را ثبت کنید</div>

@@ -13,7 +13,7 @@ const initialState: ReducerInitialState<{
 }> = {
 	loading: false,
 	data: {
-		user: { isAuthenticated: true, userName: "" },
+		user: { isAuthenticated: true, fullName: "" },
 	},
 	error: false,
 };

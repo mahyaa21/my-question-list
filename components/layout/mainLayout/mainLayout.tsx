@@ -21,7 +21,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
 		dispatch(getAuthenticatedUser());
 	}, []);
 	function openCreateQuestionModal() {
-		dispatch(openModal(MODAL_KEY_MAP.CREATE_NEW_QUESTION, { type: "CREATE" }));
+		dispatch(openModal(MODAL_KEY_MAP.CREATE_NEW_QUESTION, {}));
 	}
 	return (
 		<div className={styles.container}>

@@ -8,18 +8,12 @@ body {
   overflow: hidden;
 }
 
-/* 
+
 @supports (font-variation-settings: normal) {
   body {
     font-family: 'dana VF', tahoma, arial;
   }
 }
-
-body,
-div[id=__next],
-html {
-  height: 100%;
-} */
 
 input,
 textarea,

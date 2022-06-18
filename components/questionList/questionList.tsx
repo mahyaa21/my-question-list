@@ -13,7 +13,7 @@ const QuestionList = () => {
 	useEffect(() => {
 		dispatch(getAllQuestions());
 	}, []);
-	return <div className={styles.QuestionListContainer}>{questions.map(question => <div><QuestionBox question={question}/></div>)}</div>;
+	return <div>{questions.map(question => <QuestionBox question={question}/>)}</div>;
 };
 
 export default QuestionList;

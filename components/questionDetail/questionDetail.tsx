@@ -122,7 +122,6 @@ const QuestionDetail = () => {
 	};
 	return (
 		<div className={styles.questionDetailContainer}>
-			<div>
 				{question && (
 					<Box
 						title={question?.title}
@@ -132,7 +131,6 @@ const QuestionDetail = () => {
 						headerDetail={getQuestionHeader()}
 					/>
 				)}
-			</div>
 			<div className={styles.answersContainer}>
 				<div className={styles.questionDetailTitle}>پاسخ‌ها</div>
 				{answers?.map((answer: AnswerInterface) => (
